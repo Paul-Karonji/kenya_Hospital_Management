@@ -1,6 +1,6 @@
 {
-  "name": "kenya-hospital-management",
   "homepage": "https://paul-karonji.github.io/kenya_Hospital_Management",
+  "name": "kenya-hospital-management",
   "version": "1.0.0",
   "description": "Comprehensive healthcare management solution for Kenyan hospitals",
   "type": "module",
@@ -24,6 +24,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
+
   },
   "keywords": [
     "healthcare",

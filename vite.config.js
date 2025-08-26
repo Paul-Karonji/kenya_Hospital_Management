@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base: "/kenya_Hospital_Management", // Added missing comma here
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

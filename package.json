@@ -1,5 +1,6 @@
 {
   "name": "kenya-hospital-management",
+  "homepage": "https://paul-karonji.github.io/kenya_Hospital_Management",
   "version": "1.0.0",
   "description": "Comprehensive healthcare management solution for Kenyan hospitals",
   "type": "module",
@@ -19,7 +20,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": ["healthcare", "hospital", "management", "kenya", "nhif"],
   "author": "Your Name",

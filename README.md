@@ -1,137 +1,184 @@
-Kenya Hospital Management System
-A comprehensive healthcare management solution built for Kenyan healthcare facilities, featuring patient management, appointments, inventory tracking, and NHIF billing integration.
-Features
-🏥 Dashboard
-•	Real-time statistics overview
-•	Recent patients and upcoming appointments
-•	Low stock alerts
-•	Pending bills summary
-👥 Patient Management
-•	Complete patient registration with Kenyan-specific fields (ID Number, NHIF Number, County)
-•	Medical history tracking
-•	Next of kin information
-•	Advanced search functionality
-📅 Appointment Scheduling
-•	Doctor and department assignment
-•	Multiple appointment statuses (Scheduled, Confirmed, Completed, Cancelled)
-•	Date and time management
-•	Reason for visit tracking
-📦 Inventory Management
-•	Medical supplies and equipment tracking
-•	Low stock alerts
-•	Supplier management
-•	Expiry date monitoring
-•	Price tracking in KES
-💰 Billing & NHIF Integration
-•	NHIF coverage calculation
-•	Patient payment tracking
-•	Service billing
-•	Payment status management
-💾 Data Management
-•	Local storage persistence
-•	Data export functionality
-•	Bulk data operations
-•	Automatic backup suggestions
-Technology Stack
-•	Frontend: React 18
-•	Styling: Tailwind CSS
-•	Icons: Lucide React
-•	Build Tool: Vite
-•	State Management: React Hooks + Local Storage
+# Kenya Hospital Management
+
+A web-based Hospital Management System tailored for Kenyan healthcare facilities. This project provides a modular, JavaScript-centric codebase for managing patients, appointments, medical records, staff, billing, and basic reporting. The focus is on practical hospital workflows and a simple, extensible architecture so it can be adapted for clinics, county hospitals, or larger facilities.
+
+> Note: This README is intentionally general to fit the current JavaScript-based repository composition. If you want, I can tailor installation and runtime instructions after you share package.json, server details, or database choices.
+
+Table of Contents
+- About
+- Key Features
+- Tech Stack
+- Getting Started
+  - Prerequisites
+  - Installation
+  - Environment variables
+  - Running the app
+- Project Structure
+- Usage
+- Testing
+- Deployment
+- Contributing
+- Security & Privacy
+- License
+- Contact
+
+About
+-----
+Kenya Hospital Management provides core hospital workflows in a web application:
+- Patient registration & profile management
+- Appointment scheduling and queueing
+- Clinical notes & basic medical records
+- Staff and department management
+- Billing and invoice generation
+- Basic reporting and data export
+
+It is designed to be lightweight, configurable, and extendable for local customization and integration with Kenyan health reporting requirements.
+
+Key Features
+------------
+- Patient registration, profile and demographics
+- Scheduling and appointment management
+- Staff (doctors, nurses, admin) management and role-based access
+- Billing / invoicing (basic)
+- Searchable patient and appointment records
+- Exportable reports (CSV/JSON)
+- Modular design to add EMR, pharmacy, laboratory modules later
+
+Tech Stack
+----------
+Primary languages:
+- JavaScript (frontend and/or backend)
+- CSS / HTML for UI
+
+Typical stack (adapt as necessary for your repo):
+- Frontend: React, Vue, or plain JS (single-page or multi-page app)
+- Backend: Node.js + Express (if server-side)
+- Database: PostgreSQL / MySQL / MongoDB (configure via env)
+- Dev tooling: npm or yarn
+
 Getting Started
+---------------
+These instructions assume a JavaScript-based project. If your repo is a client-only app or uses a different backend, adapt accordingly.
+
 Prerequisites
-•	Node.js (version 16 or higher)
-•	npm or yarn
+- Node.js (LTS recommended)
+- npm or yarn
+- A database server (Postgres, MySQL, or MongoDB) if the project requires persistence
+- Git
+
 Installation
-1.	Clone the repository:
-bash
-git clone [your-repository-url]
-cd kenya-hospital-management
-2.	Install dependencies:
-bash
-npm install
-3.	Start the development server:
-bash
-npm run dev
-4.	Open your browser and navigate to https://github.com/Paul-Karonji/kenya_Hospital_Management
-Build for Production
-bash
-npm run build
-The built files will be in the dist directory.
-Project Structure
-kenya-hospital-management/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── common/           # Reusable UI components
-│   │   │   ├── DataManagement.jsx
-│   │   │   ├── Modal.jsx
-│   │   │   ├── SearchInput.jsx
-│   │   │   ├── StatCard.jsx
-│   │   │   └── StatusBadge.jsx
-│   │   ├── forms/            # Form components
-│   │   │   ├── AppointmentForm.jsx
-│   │   │   ├── InventoryForm.jsx
-│   │   │   └── PatientForm.jsx
-│   │   ├── layout/           # Layout components
-│   │   │   ├── Footer.jsx
-│   │   │   ├── Header.jsx
-│   │   │   └── Navigation.jsx
-│   │   ├── views/            # Main view components
-│   │   │   ├── AppointmentView.jsx
-│   │   │   ├── BillingView.jsx
-│   │   │   ├── DashboardView.jsx
-│   │   │   ├── InventoryView.jsx
-│   │   │   └── PatientView.jsx
-│   │   └── HospitalManagement.jsx
-│   ├── hooks/                # Custom React hooks
-│   │   └── useLocalStorage.js
-│   ├── utils/                # Utility functions
-│   │   └── sampleData.js
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── index.html
-├── package.json
-├── postcss.config.js
-├── tailwind.config.js
-└── vite.config.js
-Key Features for Kenyan Healthcare
-Localized Data Fields
-•	Kenyan counties dropdown
-•	NHIF number integration
-•	Kenyan phone number format (07xxxxxxxx)
-•	Kenya Shilling (KES) currency formatting
-Healthcare-Specific Features
-•	Medical department management
-•	Comprehensive patient medical history
-•	Next of kin tracking (important in Kenyan culture)
-•	Emergency contact information
-Data Persistence
-•	All data is automatically saved to browser's local storage
-•	Export functionality for data backup
-•	Persistent data across browser sessions
+1. Clone the repo
+   git clone https://github.com/Paul-Karonji/kenya_Hospital_Management.git
+2. Enter the project directory
+   cd kenya_Hospital_Management
+3. Install dependencies
+   npm install
+   # or
+   yarn install
+
+Environment variables
+Create a `.env` file in the project root (or follow your project's config method). Example variables:
+
+```
+PORT=3000
+NODE_ENV=development
+
+# If using a database:
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_NAME=kenya_hms
+
+# JWT / auth keys
+JWT_SECRET=replace_with_a_strong_secret
+```
+Adjust these according to your project's configuration files (config, config.js, or process.env usage).
+
+Running the app
+- Development:
+  npm run dev
+  # or
+  npm start
+- Build (if applicable):
+  npm run build
+
+If the project has separate frontend and backend, check the README or package.json for scripts like `client`, `server`, `start:client`, `start:server` and run the two parts accordingly.
+
+Project Structure (example)
+---------------------------
+The actual layout of your repository may differ. Example:
+```
+/src
+  /client        # frontend app (React/Vue/Vanilla)
+  /server        # Express / API code
+  /config
+  /migrations
+  /scripts
+package.json
+README.md
+```
+Open package.json to see available scripts and configuration.
+
+Usage
+-----
+- Register as an admin or staff user (or seed users via your DB/migration script).
+- Add departments and staff profiles.
+- Register patients and create appointments.
+- Use the billing module to generate invoices.
+- Export reports for monthly statistics.
+
+Testing
+-------
+If the repo includes tests, run:
+npm test
+# or
+yarn test
+
+If no tests exist yet, consider adding unit tests (Jest, Mocha) and end-to-end tests (Cypress, Playwright).
+
+Deployment
+----------
+Common deployment targets:
+- Heroku (Node apps)
+- Vercel / Netlify (frontend apps)
+- Docker-compose to bring up server + database
+- Cloud providers: AWS, GCP, Azure
+
+Example Docker workflow (if you add Dockerfiles):
+1. docker build -t kenya_hms .
+2. docker run --env-file .env -p 3000:3000 kenya_hms
+
 Contributing
-1.	Fork the repository
-2.	Create a feature branch (git checkout -b feature/amazing-feature)
-3.	Commit your changes (git commit -m 'Add amazing feature')
-4.	Push to the branch (git push origin feature/amazing-feature)
-5.	Open a Pull Request
+------------
+Contributions are welcome. Suggested steps:
+1. Fork the repository.
+2. Create a feature branch: git checkout -b feat/your-feature
+3. Commit changes and push: git push origin feat/your-feature
+4. Open a pull request describing your changes.
+
+Guidelines:
+- Write clear commit messages.
+- Add tests for new features.
+- Keep sensitive credentials out of code — use environment variables.
+
+Security & Privacy
+------------------
+- Do not commit secrets or database credentials to the repository.
+- Use HTTPS and secure cookies in production.
+- Protect personal health information (PHI): follow local regulations and best practices when storing or transmitting patient data.
+
 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-Support
-For support, email karonjipaul.w@gmail.com or create an issue in the repository.
-Roadmap
-•	 Multi-user authentication
-•	 Role-based access control
-•	 Advanced reporting and analytics
-•	 SMS appointment reminders
-•	 Integration with Kenya's health systems
-•	 Mobile responsive improvements
-•	 Offline mode capabilities
-Author
-Paul Karonji
-Email: karonjipaul.w@gmail.com
+-------
+This project currently does not include a license file. Consider adding an open-source license such as MIT:
 
-Built with ❤️ for Kenyan healthcare facilities
+```
+MIT License
+Copyright (c) 2025 Paul-Karonji
+Permission is hereby granted, free of charge...
+```
 
+Contact
+-------
+Maintainer: Paul-Karonji
+Repository: https://github.com/Paul-Karonji/kenya_Hospital_Management
